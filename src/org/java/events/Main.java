@@ -20,9 +20,15 @@ public class Main {
 		System.out.println("Vuoi inserire un nuovo evento? \n");
 		String input = in.nextLine().trim().toLowerCase();
 		
+//		Const for Testing
+//		final String TIME = "21:00";
+//		final String PRICE = "70.00";
+		
 		if(input.equals("si")) {
 			
-			try {
+			try {				
+				Event newEvent = null;
+				
 //				User inputs
 				System.out.println("Inserisci il nome dell'evento:");
 				String title = in.nextLine().trim();
@@ -32,8 +38,23 @@ public class Main {
 				String stringSeats = in.nextLine();
 				int seats = Integer.valueOf(stringSeats);
 				
+//				Concert inputs
+				System.out.println("L'evento in question è un concerto? \n");
+				String concertInput = in.nextLine().trim().toLowerCase();
+				
+				if(concertInput.equals("si")) {
+					System.out.println("Inserisci l'ora del concerto: ");
+					String time = in.nextLine().trim();
+					System.out.println("Inserisci il prezzo del biglietto: ");
+					String price = in.nextLine().trim();
+					Concert newEvent = new Concert(title, date, seats, time, price);
+					
+				} else {
+					Event newEvent = new Event(title, date, seats);
+				}
+				
+				
 //				New instances
-				Event newEvent = new Event(title, date, seats);
 				System.out.println("Evento creato: \n");
 				printResult(newEvent);
 				
