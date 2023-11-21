@@ -49,12 +49,12 @@ public class Event {
 		this.title = title;
 	}
 	public void setDate(String date) throws Exception {
-		LocalDate parsedDate = LocalDate.parse(date);
-		if(parsedDate.isBefore(getToday())) {
+		LocalDate convertedDate = LocalDate.parse(date);
+		if(convertedDate.isBefore(getToday())) {
 			throw new IllegalArgumentException("Date must be earlier.");
 		}
 		
-		this.date = parsedDate;
+		this.date = convertedDate;
 	}
 	private void setTotalSeats(int totalSeats) throws Exception {
 		
