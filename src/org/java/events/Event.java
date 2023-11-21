@@ -37,7 +37,13 @@ public class Event {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return  getDate().format(formatter); 
 	}
-	
+	public int getRemainingSeats() throws Exception{
+		if(reservedSeats > totalSeats) {
+			throw new IllegalArgumentException("reservedSeats exceed totalSeats.");
+		}
+		return totalSeats - reservedSeats;
+	}
+
 //	Setters
 	public void setTitle(String title) {
 		this.title = title;
@@ -58,7 +64,7 @@ public class Event {
 			
 		this.totalSeats = totalSeats;
 	}
-	
+
 //	Methods
 	public void booking() throws Exception {
 		if(!isPossibileToBook()) {
