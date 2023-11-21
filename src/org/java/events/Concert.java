@@ -36,13 +36,13 @@ public class Concert extends Event {
 	        LocalTime parsedTime = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm"));
 	        this.time = parsedTime;
 	}
-	public void setPrice(String price) throws Exception{
-		BigDecimal convertedDecimal = new BigDecimal(price);
-		if(convertedDecimal.compareTo(BigDecimal.ZERO) <= 0) {
-			throw new IllegalArgumentException("Date must be earlier.");
-		}
-		this.price = convertedDecimal;
-	}
+ 	public void setPrice(String price) throws Exception {
+ 	    BigDecimal convertedPrice = new BigDecimal(price);
+ 	    if (convertedPrice.compareTo(BigDecimal.ZERO) <= 0) {
+ 	        throw new IllegalArgumentException("Price must be greater than zero.");
+ 	    }
+ 	    this.price = convertedPrice;
+ 	}
 	
 	@Override
  	public String toString() {
